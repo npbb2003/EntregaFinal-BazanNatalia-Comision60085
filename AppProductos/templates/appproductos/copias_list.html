@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Listado Copias</title>
+    </head>
+<body>
+
+
+    {% extends "appproductos/index.html" %}  {% load static %}
+
+    {% block title %} Copias - Revelados {% endblock %}
+
+    {% block contenidoQueCambia %}   
+
+    <div class="container px-5">
+        <h2 style="margin-top: 2rem; text-align: left; color: #2a4d69;">Listado de precios de copias impresas</h2>
+
+        {% for copia in object_list %}
+
+            <li>
+                <p>${{copia.precio}}</p>
+                <p>
+
+                    <a href="{% url 'Detail' copia.id %}" class="btn btn-primary">Ver</a>
+                    <a href="{% url 'Edit' copia.id %}" class="btn btn-primary">Editar</a>
+                    <a href="{% url 'Delete' copia.id %}" class="btn btn-primary">Borrar</a>
+                </p>
+            </li>
+        {% endfor %}
+
+        <div class="text-center">
+            <a href="{% url 'NuevaCopia' %}" class="btn btn-primary">Agregar nuevo item</a>
+            <a href="{% url 'copias' %}" class="btn btn-primary">Regresar</a>
+        </div>
+        <br>
+
+    </div>
+
+    
+    
+    {% endblock %}
+
+</body>
+</html>

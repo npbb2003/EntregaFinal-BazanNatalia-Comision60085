@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Fotolibros</title>
+    </head>
+<body>
+
+
+    {% extends "appproductos/index.html" %}  {% load static %}
+
+    {% block title %} Buscar fotolibros {% endblock %}
+
+    {% block contenidoQueCambia %} 
+    
+    <div class="container px-5">
+
+        <h2 style="margin-top: 2rem; text-align: left; color: #2a4d69;">Resultados de la busqueda por tamaño {{tamanio}}</h2>
+        <br>
+    
+    {% if fotolibros %}
+    <ul>
+        {%for libro in fotolibros %}
+            <li>{{libro.tamanio}}</li>
+            <li>{{libro.cant_hojas}}</li>
+            <li>${{libro.precio}}</li>
+            <br>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <div class="small mb-1">Sin resultados</div>
+        <br>
+    {% endif %}
+    
+    <a href="{% url 'busquedaFotolibros' %}" class="btn btn-primary">Regresar</a>
+    
+
+</div>
+<br>
+{% endblock %}
+
+</body>
+</html>

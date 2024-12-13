@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Listado Fotolibros</title>
+    </head>
+<body>
+
+
+    {% extends "appproductos/index.html" %}  {% load static %}
+
+    {% block title %} Fotolibros {% endblock %}
+
+    {% block contenidoQueCambia %}   
+
+    <div class="container px-5">
+        <h2 style="margin-top: 2rem; text-align: left; color: #2a4d69;">Listado de tamaños de Fotolibros</h2>
+
+        {% for libro in object_list %}
+
+            <li>
+                <p>{{libro.tamanio}}</p>
+                <p>
+
+                    <a href="{% url 'FotolibrosDetail' libro.id %}" class="btn btn-primary">Ver</a>
+                    <a href="{% url 'EditFotolibro' libro.id %}" class="btn btn-primary">Editar</a>
+                    <a href="{% url 'DeleteFotolibro' libro.id %}" class="btn btn-primary">Borrar</a>
+                </p>
+            </li>
+        {% endfor %}
+
+        <div class="text-center">
+            <a href="{% url 'NuevoFotolibro' %}" class="btn btn-primary">Agregar nuevo item</a>
+            <a href="{% url 'fotolibros' %}" class="btn btn-primary">Regresar</a>
+        </div>
+        <br>
+
+    </div>
+
+    
+    
+    {% endblock %}
+
+</body>
+</html>

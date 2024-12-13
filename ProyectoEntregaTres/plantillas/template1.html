@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipo</title>
+    <!-- <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .team-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            max-width: 1200px;
+            padding: 20px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 20px;
+            width: 300px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .card img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .card p {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .card .role {
+            font-weight: bold;
+            color: #007BFF;
+        }
+    </style> -->
+</head>
+<body>
+    <h1>Hola, {{ nombre }} {{ apellido }}</h1>
+
+    <h2>ESTE TEMPLATE FUE CREADO EL: {{ hoy }}</h2>
+    <h3> Estas son mis notas de la uni: </h3>
+    <p>
+        {% for n in Notas %}
+        {{ n }}
+        <br>
+        {% endfor %}
+    </p>
+    <p>
+        {% for n in Notas %} 
+        {% if n < 4 %}
+            <p style="color: red" > Nota Mala: {{ n }}</p>
+        {% else %}
+            <p style="color: green" > Nota Buena: {{ n }}</p>
+        {% endif %}
+
+        {% endfor %}
+    </p>
+
+    <!-- <div class="team-container">
+        <div class="card">
+            <img src="https://via.placeholder.com/100" alt="Foto de Juan">
+            <h3>Juan Pérez</h3>
+            <p class="role">Desarrollador Frontend</p>
+            <p>Apasionado por crear experiencias web interactivas y funcionales.</p>
+        </div>
+
+        <div class="card">
+            <img src="https://via.placeholder.com/100" alt="Foto de Ana">
+            <h3>Ana Gómez</h3>
+            <p class="role">Diseñadora UX/UI</p>
+            <p>Especialista en diseñar interfaces centradas en el usuario.</p>
+        </div>
+
+        <div class="card">
+            <img src="https://via.placeholder.com/100" alt="Foto de Luis">
+            <h3>Luis Rodríguez</h3>
+            <p class="role">Gerente de Proyecto</p>
+            <p>Líder estratégico con enfoque en cumplir objetivos y plazos.</p>
+        </div>
+    </div> -->
+
+</body>
+</html>

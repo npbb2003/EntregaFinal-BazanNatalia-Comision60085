@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Elimina Sesiones</title>
+    </head>
+<body>
+
+
+    {% extends "appproductos/index.html" %}  {% load static %}
+
+    {% block title %} Sesion de fotos {% endblock %}
+
+    {% block contenidoQueCambia %} 
+    
+    <div class="container px-5">
+
+    
+        <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0 img-fluid" src="https://i.pinimg.com/1200x/6f/ee/01/6fee010c2f54dbad9672029af47e274f.jpg" alt="..." style="max-width: 25%;" /></div>
+        <br>
+
+        <form action="" method="POST">
+            {% csrf_token %}
+
+            <p>¿Estás seguro que deseas borrar esta sesion de fotos: "{{ object }}"?</p>
+            
+            <button type="submit" class="btn btn-primary">Borrar</button>
+            <a href="{% url 'lista' %}" class="btn btn-primary">Cancelar</a>
+
+        </form>
+        <br>
+
+    </div>
+
+
+    {% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Fotolibros</title>
+    </head>
+<body>
+
+
+    {% extends "appproductos/index.html" %}  {% load static %}
+
+    {% block title %} Buscar fotolibros {% endblock %}
+
+    {% block contenidoQueCambia %} 
+    
+    <div class="container px-5">
+
+        <h2 style="margin-top: 2rem; text-align: left; color: #2a4d69;">Búsqueda de tamaños de fotolibros</h2>
+        <br>
+        <form action = "/buscarFotolibros" method = "GET">
+            <input type="number" name="tamanio" id="tamanio">
+            <input type="submit" name="Buscar">
+
+        </form>
+        <br>
+        <p>
+            <a href="{% url 'fotolibros' %}" class="btn btn-primary">Regresar</a>
+        </p>
+        <br>
+    </div>
+
+    {% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Inicio de sesion</title>
+    </head>
+<body>
+
+
+    {% extends "appproductos/index.html" %}  {% load static %}
+
+    {% block title %} INICIO {% endblock %}
+
+    {% block contenidoQueCambia %}   
+
+
+    <section class="py-5">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="row gx-4 gx-lg-5 align-items-center">
+                <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="https://lizpinto.net/wp-content/uploads/2017/05/CamaraBlack.jpg" alt="..." /></div>
+                <div class="col-md-6">
+                    <div class="small mb-1">Muchas gracias por tu visita.</div>
+                    <h1 class="display-5 fw-bolder">Hasta Luego!</h1>
+                    <div class="fs-5 mb-5">
+                        <!-- <span class="text-decoration-line-through">1000</span>
+                        <span>$790</span> -->
+                    </div>
+                    <p class="lead">Correo: natalia.bazan.fotografia@gmail.com </p>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    {% endblock %}
+
+</body>
+</html>
