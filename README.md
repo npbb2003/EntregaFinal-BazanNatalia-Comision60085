@@ -1,5 +1,4 @@
-# ProyectoEntregaTres
-
+# ProyectoFinal
 ESTUDIO FOTOGRAFICO NATALIA BAZAN
 
 Este proyecto es una web desarrollada con Django que permite la compra de productos fotograficos como copias impresas, fotolibros y sesiones de fotos.
