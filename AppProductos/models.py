@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -22,6 +23,7 @@ class Fotolibro(models.Model):
 
 
 class SesionFotografica(models.Model):
+
     nombre = models.CharField(max_length=40)
     descripcion = models.CharField(max_length=100)
     activo = models.BooleanField(default=False)
@@ -29,3 +31,11 @@ class SesionFotografica(models.Model):
 
     def __str__(self):
         return f"{self.nombre}: {self.descripcion}, ${self.precio}"
+
+
+class Avatar(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
+    imagen = models.ImageField(upload_to="avatares", null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.user}{self.imagen}"

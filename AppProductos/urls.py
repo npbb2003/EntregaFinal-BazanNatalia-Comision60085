@@ -1,6 +1,8 @@
 from django.urls import path
 from AppProductos import views
 from django.contrib.auth.views import LogoutView
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 urlpatterns = [
@@ -67,8 +69,11 @@ urlpatterns = [
         LogoutView.as_view(template_name="appproductos/logout.html"),
         name="Logout",
     ),
+    path("edit/", views.editar_perfil, name="EditarPerfil"),
+    path("acercaDeMi/", views.acercaDeMi, name="acercaDeMi"),
 ]
 
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # path("sesionesFormulario/", views.sesionesFormulario, name="sesionesFormulario"),
 # path(

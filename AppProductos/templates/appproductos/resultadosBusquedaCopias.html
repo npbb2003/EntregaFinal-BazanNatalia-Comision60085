@@ -23,9 +23,9 @@
     {% if copias %}
     <ul>
         {%for copia in copias %}
-            <li>{{copia.superficie}}</li>
-            <li>{{copia.tamanio}}</li>
-            <li>${{copia.precio}}</li>
+            <li>Superficie de la copia: {{copia.superficie}}</li>
+            <li>Tamaño de la copia: {{copia.tamanio}}</li>
+            <li>Precio: ${{copia.precio}}</li>
             <br>
         {% endfor %}
     </ul>

@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from AppProductos.models import SesionFotografica, CopiaImpresa, Fotolibro
+from AppProductos.models import SesionFotografica, CopiaImpresa, Fotolibro, Avatar
 from AppProductos.forms import SesionFormulario, CopiaFormulario, FotolibroFormulario
 import re
 from django.views.generic import ListView
@@ -8,9 +8,10 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import UpdateView, DeleteView, CreateView
 from django.urls import reverse_lazy
 from django.contrib.auth.forms import AuthenticationForm
-from .forms import UserRegisterForm
+from .forms import UserRegisterForm, UserEditForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -85,6 +86,11 @@ def copiasImpresas(req):
     # return render(req, "appproductos/copias.html", {"miFormulario": miFormulario})
 
     # # return render(req, "appproductos/copias.html")
+
+
+def acercaDeMi(req):
+
+    return render(req, "appproductos/acercaDeMi.html")
 
 
 def busquedaSesiones(req):
@@ -427,6 +433,7 @@ def login_request(request):
 
 
 def register(request):
+
     if request.method == "POST":
 
         form = UserRegisterForm(request.POST)
@@ -441,6 +448,64 @@ def register(request):
         form = UserRegisterForm()
 
     return render(request, "appproductos/registro.html", {"form": form})
+
+
+@login_required
+def editar_perfil(request):
+    """
+    Función de vista para manejar la edición del perfil de usuario.
+    """
+
+    # El usuario debe estar logueado para editar su perfil.
+    # Al estar logueado, podemos encontrar la instancia del usuario dentro de la solicitud -> request.user
+    usuario = request.user
+
+    if (
+        request.method == "POST"
+    ):  # Verificar si la solicitud es un POST (envío de formulario)
+        # Crear una instancia del formulario y llenarla con datos de la solicitud
+        # y la instancia del usuario actual
+        miFormulario = UserEditForm(request.POST, request.FILES, instance=usuario)
+
+        if miFormulario.is_valid():  # Validar los datos del formulario
+            if miFormulario.cleaned_data.get(
+                "imagen"
+            ):  # Verificar si se subió una imagen
+                if Avatar.objects.filter(
+                    user=usuario
+                ).exists():  # Si el usuario ya tiene una imagen
+                    # Actualizar la imagen existente
+                    usuario.avatar.imagen = miFormulario.cleaned_data.get("imagen")
+                    usuario.avatar.save()
+
+                else:
+                    # Crear un nuevo objeto de imagen y asociarlo con el usuario
+                    avatar = Avatar(
+                        user=usuario, imagen=miFormulario.cleaned_data.get("imagen")
+                    )
+                    avatar.save()
+
+            miFormulario.save()  # Guardar los datos del formulario (incluyendo cualquier otra actualización del perfil)
+
+            return render(
+                request, "AppProductos/index.html"
+            )  # Redirigir a la plantilla 'padre.html'
+
+    else:  # Si la solicitud es un GET (carga inicial de la página)
+        # Crear una instancia del formulario con los datos del usuario actual pre-llenados
+        if Avatar.objects.filter(user=usuario).exists():
+            miFormulario = UserEditForm(
+                initial={"imagen": usuario.avatar.imagen}, instance=usuario
+            )
+        else:
+            miFormulario = UserEditForm(instance=usuario)
+
+    # Renderizar la plantilla 'editar_usuario.html', pasando el formulario y los datos del usuario
+    return render(
+        request,
+        "AppProductos/editar_usuario.html",
+        {"mi_form": miFormulario, "usuario": usuario},
+    )
 
 
 ############### funciones que quedaron sin efecto - IGNORAR ###############

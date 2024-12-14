@@ -1,5 +1,6 @@
 from django.contrib import admin
-from AppProductos.models import Fotolibro, CopiaImpresa, SesionFotografica
+from AppProductos.models import Fotolibro, CopiaImpresa, SesionFotografica, Avatar
+
 
 # Register your models here.
 
@@ -8,3 +9,4 @@ from AppProductos.models import Fotolibro, CopiaImpresa, SesionFotografica
 admin.site.register(Fotolibro)
 admin.site.register(CopiaImpresa)
 admin.site.register(SesionFotografica)
+admin.site.register(Avatar)

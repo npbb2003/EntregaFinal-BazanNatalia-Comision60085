@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Editar Usuario</title>
+    </head>
+<body>
+
+
+    {% extends "appproductos/index.html" %}  {% load static %}
+
+    {% block title %} Editar usuario {% endblock %}
+
+    {% block contenidoQueCambia %}   
+
+
+    
+
+    <div class="container px-5">
+        <h2 style="margin-top: 2rem; text-align: left; color: #2a4d69;">Editar perfil de usuario</h2>
+
+        <br>
+
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+    
+            <table>
+                {{ mi_form.as_table }}
+            </table>
+            <br>
+            <input type="submit" class="btn btn-primary" value="Actualizar">
+            <a href="{% url 'inicio' %}" class="btn btn-primary">Cancelar</a>
+    
+        </form>
+
+        <br>
+        
+    </div>
+    
+
+
+
+
+
+    {% endblock %}
+
+</body>
+</html>

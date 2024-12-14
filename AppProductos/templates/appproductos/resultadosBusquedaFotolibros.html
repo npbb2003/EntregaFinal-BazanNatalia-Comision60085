@@ -23,9 +23,9 @@
     {% if fotolibros %}
     <ul>
         {%for libro in fotolibros %}
-            <li>{{libro.tamanio}}</li>
-            <li>{{libro.cant_hojas}}</li>
-            <li>${{libro.precio}}</li>
+            <li>Tamaño del fotolibro abierto: {{libro.tamanio}}</li>
+            <li>Cantidad de hojas incluidas: {{libro.cant_hojas}}</li>
+            <li>Precio:${{libro.precio}}</li>
             <br>
         {% endfor %}
     </ul>

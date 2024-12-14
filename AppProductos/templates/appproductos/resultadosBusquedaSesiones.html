@@ -23,9 +23,9 @@
     {% if sesiones %}
     <ul>
         {%for sesion in sesiones %}
-            <li>{{sesion.nombre}}</li>
-            <li>{{sesion.descripcion}}</li>
-            <li>${{sesion.precio}}</li>
+            <li>Nombre de la sesión: {{sesion.nombre}}</li>
+            <li>Descripción: {{sesion.descripcion}}</li>
+            <li>Precio: ${{sesion.precio}}</li>
             <br>
         {% endfor %}
     </ul>
